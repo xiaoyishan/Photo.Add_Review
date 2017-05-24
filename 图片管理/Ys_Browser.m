@@ -39,6 +39,8 @@
     [BC addSubview:pag];
 
     [self SubViews];
+
+    
 }
 
 
@@ -67,11 +69,14 @@
 
 
             //被放大的图片
-            SDBrowserImageView *ScaleIMG=[[SDBrowserImageView alloc]initWithFrame:CGRectMake(0, 0, Width, Height)];
+            UIImageView *ScaleIMG=[[UIImageView alloc]initWithFrame:CGRectMake((Width+20)*k, 0, Width, Height)];
             ScaleIMG.contentMode=UIViewContentModeCenter;
             ScaleIMG.clipsToBounds = YES;
             ScaleIMG.userInteractionEnabled = YES;
             [subSc addSubview:ScaleIMG];
+            ScaleIMG.layer.anchorPoint=CGPointMake(.5, .5);
+//            ScaleIMG.layer.mj_x=subSc.mj_w/2;
+//            ScaleIMG.layer.mj_y=subSc.mj_h/2;
 
             //交互
             UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(SingleTouch:)];
@@ -81,6 +86,9 @@
             [ScaleIMG addGestureRecognizer:doubleTap];
             [singleTap requireGestureRecognizerToFail:doubleTap];
 
+//            [ScaleIMG setUserInteractionEnabled:YES];
+//            [ScaleIMG setMultipleTouchEnabled:YES];
+//            [self addGestureRecognizerToView:ScaleIMG];
 
 
             //路径图片处理
@@ -104,6 +112,7 @@
                 ScaleIMG.contentMode=UIViewContentModeScaleAspectFit;
                 subSc.maximumZoomScale=ScaleIMG.image.size.height/Height*4;
                 NSLog(@"最大值:%f", subSc.maximumZoomScale);
+//                ScaleIMG.layer.mj_size=ScaleIMG.image.size;
             }
 
             //长图
@@ -204,7 +213,52 @@
 
 
 
+// 添加所有的手势
+- (void) addGestureRecognizerToView:(UIView *)view
+{
+    // 旋转手势
+    UIRotationGestureRecognizer *rotationGestureRecognizer = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotateView:)];
+    [view addGestureRecognizer:rotationGestureRecognizer];
 
+    // 缩放手势
+    UIPinchGestureRecognizer *pinchGestureRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchView:)];
+    [view addGestureRecognizer:pinchGestureRecognizer];
+
+    // 移动手势
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
+    [view addGestureRecognizer:panGestureRecognizer];
+}
+
+// 处理旋转手势
+- (void) rotateView:(UIRotationGestureRecognizer *)rotationGestureRecognizer
+{
+    UIView *view = rotationGestureRecognizer.view;
+    if (rotationGestureRecognizer.state == UIGestureRecognizerStateBegan || rotationGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        view.transform = CGAffineTransformRotate(view.transform, rotationGestureRecognizer.rotation);
+        [rotationGestureRecognizer setRotation:0];
+    }
+}
+
+// 处理缩放手势
+- (void) pinchView:(UIPinchGestureRecognizer *)pinchGestureRecognizer
+{
+    UIView *view = pinchGestureRecognizer.view;
+    if (pinchGestureRecognizer.state == UIGestureRecognizerStateBegan || pinchGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        view.transform = CGAffineTransformScale(view.transform, pinchGestureRecognizer.scale, pinchGestureRecognizer.scale);
+        pinchGestureRecognizer.scale = 1;
+    }
+}
+
+// 处理拖拉手势
+- (void) panView:(UIPanGestureRecognizer *)panGestureRecognizer
+{
+    UIView *view = panGestureRecognizer.view;
+    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan || panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        CGPoint translation = [panGestureRecognizer translationInView:view.superview];
+        [view setCenter:(CGPoint){view.center.x + translation.x, view.center.y + translation.y}];
+        [panGestureRecognizer setTranslation:CGPointZero inView:view.superview];
+    }
+}
 
 
 

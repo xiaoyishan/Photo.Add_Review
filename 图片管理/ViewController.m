@@ -83,19 +83,19 @@
     [Reviews addObjectsFromArray:_Locallist];
     if (button.tag<500) {
 
-//        YS_Photo *obj=[[YS_Photo alloc]init];
-//        obj.ClickImageBlock(Reviews,button.tag-100);
-
-        Ys_Browser *obj=[[Ys_Browser alloc]init];
+        YS_Photo *obj=[[YS_Photo alloc]init];
         obj.ClickImageBlock(Reviews,button.tag-100);
+
+//        Ys_Browser *obj=[[Ys_Browser alloc]init];
+//        obj.ClickImageBlock(Reviews,button.tag-100);
 
     }else{//本地File图片
 
-        Ys_Browser *obj=[[Ys_Browser alloc]init];
-        obj.ClickImageBlock(Reviews,button.tag-1000);
-
-//        YS_Photo *obj=[[YS_Photo alloc]init];
+//        Ys_Browser *obj=[[Ys_Browser alloc]init];
 //        obj.ClickImageBlock(Reviews,button.tag-1000);
+
+        YS_Photo *obj=[[YS_Photo alloc]init];
+        obj.ClickImageBlock(Reviews,button.tag-1000);
     }
 }
 -(void)DelIMG:(UIButton*)button{

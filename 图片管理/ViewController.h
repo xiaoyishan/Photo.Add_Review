@@ -10,7 +10,7 @@
 #import "ZYQAssetPickerController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "SVProgressHUD.h"
-//#import "YS_Photo.h"
+#import "YS_Photo.h"
 #import "Ys_Browser.h"
 
 #import "comm.h"

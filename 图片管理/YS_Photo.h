@@ -5,9 +5,9 @@
 //  Created by sundeariOS on 16/6/1.
 //  Copyright © 2016年 sundeariOS. All rights reserved.
 //
-#define  kScreenWidth  [[UIScreen mainScreen] bounds].size.width
-#define  kScreenHeight  [[UIScreen mainScreen] bounds].size.height
-#define  kScreenPoint   (1 / [UIScreen mainScreen].scale)
+#define  Width  [[UIScreen mainScreen] bounds].size.width
+#define  Height  [[UIScreen mainScreen] bounds].size.height
+#define  kPoint   (1 / [UIScreen mainScreen].scale)
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "UIImageView+WebCache.h"

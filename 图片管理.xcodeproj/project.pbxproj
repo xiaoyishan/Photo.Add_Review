@@ -843,7 +843,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = G739QEL3W7;
-				GCC_PREFIX_HEADER = "/Users/sundear/Desktop/Photo.Add_Review-master/图片管理/必备组件/SDPhotoBrowserConfig.h";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/必备组件/SDPhotoBrowserConfig.h";
 				INFOPLIST_FILE = "图片管理/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -860,7 +860,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = G739QEL3W7;
-				GCC_PREFIX_HEADER = "/Users/sundear/Desktop/Photo.Add_Review-master/图片管理/必备组件/SDPhotoBrowserConfig.h";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/必备组件/SDPhotoBrowserConfig.h";
 				INFOPLIST_FILE = "图片管理/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

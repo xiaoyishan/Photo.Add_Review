@@ -103,7 +103,7 @@
 //    YPimageCell *cell = (YPimageCell*)[[button superview]superview];//获取cell
 //    NSIndexPath *dex =[sCol indexPathForCell:cell];//获取cell对应的indexpath;
 //    NSLog(@"index:  %@",dex);
-//
+//    //test
 //
 //    [sCol performBatchUpdates:^{
 ////        [sCol deleteItemsAtIndexPaths:@[dex]];
